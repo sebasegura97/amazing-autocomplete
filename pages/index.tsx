@@ -15,7 +15,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>Search yout favorite crypto!</h1>
+        <h1 className={styles.title}>Search your favorite crypto!</h1>
         <Autocomplete />
       </main>
 

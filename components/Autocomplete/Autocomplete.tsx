@@ -87,7 +87,7 @@ const Autcomplete = () => {
       <form>
         <div className={styles.inputContainer}>
           <input
-            autoComplete="disabled"
+            autoComplete="off"
             name="autocomplete"
             type="text"
             placeholder="Search crypto"
