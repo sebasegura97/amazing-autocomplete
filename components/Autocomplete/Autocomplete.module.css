@@ -4,15 +4,15 @@
 
 
 .inputContainer {
-    width: 400px;
+    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: flex-start;
     position: relative;
 }
 
 .search {
-    width: 360px;
+    width: calc(100% - 40px);
     height: 48px;
     border-radius: 8px;
     padding-left: 12px;
@@ -63,7 +63,7 @@
 
 .suggestion {
     height: 48px;
-    width: 360px;
+    width: calc(100% - 48px);
 
     padding: 8px;
     display: flex;

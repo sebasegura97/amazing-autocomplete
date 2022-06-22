@@ -4,12 +4,15 @@
 
 .main {
   height: 90vh;
+  max-width: 600px;
+
   padding: 4rem 0;
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: left;
+  margin: auto;
 }
 
 .footer {
@@ -56,4 +59,5 @@
   flex-wrap: wrap;
   max-width: 800px;
 }
+
 
