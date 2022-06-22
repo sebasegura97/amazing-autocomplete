@@ -3,7 +3,6 @@ import Head from "next/head";
 import Autocomplete from "../components/Autocomplete";
 import styles from "../styles/Home.module.css";
 
-export const sum = (a: number, b: number) => a + b;
 
 
 const Home: NextPage = () => {

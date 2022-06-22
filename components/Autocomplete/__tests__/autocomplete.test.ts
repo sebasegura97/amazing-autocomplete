@@ -1,4 +1,4 @@
-import {sum} from '../index'
+export const sum = (a: number, b: number) => a + b;
 
 describe("sum()", () => {
   it("should return 5 if given 2 and 3 ", () => {
