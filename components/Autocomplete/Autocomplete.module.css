@@ -68,8 +68,9 @@
     padding: 8px;
     display: flex;
     justify-content: space-between;
+    border: none;
     border-bottom: 1px solid #CCC;
-    margin-bottom: 12px;
+    padding-top: 16px;
     background-color: transparent;
 
 }

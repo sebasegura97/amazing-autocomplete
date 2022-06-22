@@ -24,9 +24,7 @@ const Suggestion: React.FC<
         onClick={handleClick}
         className={styles.suggestion}
         style={{
-          border: active ? "2px solid green" : "2px solid transparent",
-          borderBottom: active ? '2px solid green' : '1px solid #CCC',
-          borderRadius: 8
+          background: active ? '#f0f0f0' : 'white',
         }}
       >
         <span className={styles.suggestionTitle}>
