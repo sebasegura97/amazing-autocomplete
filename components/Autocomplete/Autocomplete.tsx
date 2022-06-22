@@ -1,4 +1,11 @@
-import { ChangeEvent, KeyboardEvent, useMemo, useRef, useState } from "react";
+import {
+  ChangeEvent,
+  FormEventHandler,
+  KeyboardEvent,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { debounce } from "../../utils/debounce";
 import styles from "./Autocomplete.module.css";
 import Suggestion from "./Suggestion";
@@ -82,9 +89,56 @@ const Autcomplete = () => {
       return <p className={styles.errorMessage}>{searchError}</p>;
     }
   };
+
+  const handleArrowDown = () => {
+    if (suggestions.length > 0) {
+      if (!selectedOption) {
+        const { name, id } = suggestions[0];
+        if (name && id) {
+          handleSelect(name, id);
+        }
+      } else {
+        let idx = suggestions.findIndex((item) => item.id === selectedOption);
+        idx = idx === suggestions.length - 1 ? 0 : idx + 1;
+        const { name, id } = suggestions[idx];
+        if (name && id) {
+          handleSelect(name, id);
+        }
+      }
+    }
+  };
+
+  const handleArrowUp = () => {
+    if (suggestions.length > 0) {
+      if (!selectedOption) {
+        const { name, id } = suggestions[suggestions.length - 1];
+        if (name && id) {
+          handleSelect(name, id);
+        }
+      } else {
+        let idx = suggestions.findIndex((item) => item.id === selectedOption);
+        idx = idx === 0 ? suggestions.length - 1 : idx - 1;
+        const { name, id } = suggestions[idx];
+        if (name && id) {
+          handleSelect(name, id);
+        }
+      }
+    }
+  };
+
+  const handleKeyDown = (e: KeyboardEvent<HTMLFormElement>) => {
+    console.log(e.key);
+    if (e.key === "ArrowDown") {
+      handleArrowDown();
+    }
+    if (e.key === "ArrowUp") {
+      handleArrowUp();
+    }
+  };
+
   return (
     <div className={styles.container}>
-      <form>
+      <form onKeyDown={handleKeyDown}>
         <div className={styles.inputContainer}>
           <input
             autoComplete="off"
