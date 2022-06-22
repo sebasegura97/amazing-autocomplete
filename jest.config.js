@@ -1,4 +1,6 @@
 module.exports = {
+  injectGlobals: true,
+  testEnvironment: 'node',
   setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
   testPathIgnorePatterns: ["<rootDir>/.next/", "<rootDir>/node_modules/"],
   moduleNameMapper: {
