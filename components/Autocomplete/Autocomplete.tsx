@@ -1,4 +1,4 @@
-import { ChangeEvent, useMemo, useState } from "react";
+import { ChangeEvent, KeyboardEvent, useMemo, useRef, useState } from "react";
 import { debounce } from "../../utils/debounce";
 import styles from "./Autocomplete.module.css";
 import Suggestion from "./Suggestion";
@@ -15,6 +15,9 @@ const Autcomplete = () => {
   const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchError, setSearchError] = useState("");
+  const [selectedOption, setSelectedOption] = useState("");
+  const searchRef = useRef<HTMLInputElement>(null);
+
   const [suggestions, setSuggestions] = useState<SearchCryptoResponseData[]>(
     []
   );
@@ -41,9 +44,24 @@ const Autcomplete = () => {
     []
   );
 
+  const handleSelect = (name: string, id: string) => {
+    if (searchRef.current?.value) {
+      searchRef.current.value = name;
+      setSelectedOption(id);
+    }
+  };
+
   const renderList = () => {
     if (suggestions.length && searchTerm) {
-      return suggestions.map((item) => <Suggestion key={item.id} {...item} searchTerm={searchTerm} />);
+      return suggestions.map((item) => (
+        <Suggestion
+          {...item}
+          key={item.id}
+          searchTerm={searchTerm}
+          active={item.id === selectedOption}
+          onSelect={handleSelect}
+        />
+      ));
     }
 
     if (suggestions.length === 0 && searchTerm.length > 0) {
@@ -64,17 +82,18 @@ const Autcomplete = () => {
       return <p className={styles.errorMessage}>{searchError}</p>;
     }
   };
-
   return (
     <div className={styles.container}>
       <form>
         <div className={styles.inputContainer}>
           <input
+            autoComplete="disabled"
             name="autocomplete"
             type="text"
             placeholder="Search crypto"
             className={styles.search}
             onChange={debouncedSearch}
+            ref={searchRef}
           />
           {loading && <div className={styles.spinner} />}
         </div>

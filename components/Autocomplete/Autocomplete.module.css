@@ -33,7 +33,7 @@
     position: relative;
 }
 
-.spinner::after{
+.spinner::after {
     position: absolute;
     content: "";
     width: 16px;
@@ -70,7 +70,14 @@
     justify-content: space-between;
     border-bottom: 1px solid #CCC;
     margin-bottom: 12px;
+    background-color: transparent;
+
 }
+
+.suggestion:hover {
+    cursor: pointer;
+}
+
 
 .emptyMessage {
     padding-left: 8px;

@@ -22,7 +22,7 @@ const Home: NextPage = () => {
 
       <footer className={styles.footer}>
         <p>
-          Powered by <strong>Sebastian Segura</strong>
+          Powered by <strong>Sebastián Segura</strong>
         </p>
       </footer>
     </div>
